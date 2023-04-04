@@ -1,3 +1,15 @@
+import { useContext } from "react";
+import { Dashboard, Header } from "../../components/Dashboard";
+import { AuthContext } from "../../contexts/AuthContext";
+import { LoginPage } from "../login";
+
 export const MainDash = () => {
-  return <h1>Dashboard</h1>;
+  const { isLoggedIn } = useContext(AuthContext);
+
+  return (
+    <>
+      {isLoggedIn ? <Header /> : null}
+      {isLoggedIn ? <Dashboard /> : <LoginPage />}
+    </>
+  );
 };
